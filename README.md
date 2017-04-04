@@ -1,0 +1,1 @@
+# cordova_angular2_firebase_1
