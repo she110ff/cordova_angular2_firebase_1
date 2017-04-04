@@ -5,11 +5,17 @@
 1. Node.js install
 
 2. Angular cli install
--- npm uninstall -g angular-cli  // https://github.com/angular/angularfire2/blob/master/docs/1-install-and-setup.md
--- npm cache clean
+
+npm uninstall -g angular-cli  // https://github.com/angular/angularfire2/blob/master/docs/1-install-and-setup.md
+
+npm cache clean
+
 npm install -g @angular/cli@latest
+
 npm install -g typings   // The TypeScript Definition Manager
+
 npm install -g typescript
+
 
 3. New Project       // https://github.com/angular/angularfire2/blob/master/docs/1-install-and-setup.md
 -- ng new <project-name> => readers123
