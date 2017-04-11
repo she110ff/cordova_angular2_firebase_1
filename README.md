@@ -234,7 +234,7 @@ cordova platform add browser
 cordova run browser
 ```
 
-###  11. Cordova - Automation build
+###  11. Build angular2 for Cordova 
 
 ```bash
 rm -r www
@@ -248,12 +248,15 @@ cordova run browser
 
 
 
-#Reference Sites
-##Get Started
+# Reference Sites
+
+## Get Started
+
 https://cordova.apache.org/docs/ko/6.x/guide/cli/index.html
 https://github.com/angular/angularfire2
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
 
-##CLI
+## CLI
+
 https://github.com/angular/angular-cli/wiki
 https://cordova.apache.org/docs/en/latest/reference/cordova-cli/index.html
