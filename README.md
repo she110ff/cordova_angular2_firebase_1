@@ -295,8 +295,8 @@ It is time to create an application that will be more useful than the browser pl
 ### 13. Add Android Platform
 
 ```bash
-$ cordova platform add android
-$ cordova build android
+cordova platform add android
+cordova build android
 ```
 
 Google broke Cordova Android 6.1.x and some other frameworks with their latest sdk tools update.
@@ -307,7 +307,13 @@ Or you can remove the existing platform and add the new one (will delete any man
 ```bash
 cordova platform rm android
 cordova platform add android@6.2.1
+cordova build android
 ```
+
+### 14. Opening in Android Studio
+Then just open up the project using File > Open and pointing to the (yourProjectDir)/Platforms/Android directory.
+
+
 
 # Reference Sites
 
