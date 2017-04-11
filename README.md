@@ -201,7 +201,7 @@ ng serve
 
 ## Cordova CLI - Install   
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
-###8. Cordova Install
+###  8. Cordova Install
 Then we can install the `cordova-cli` package using NPM:
 ```bash
 npm install -g cordova
@@ -211,7 +211,8 @@ npm install -g cordova
 
 ## Cordova - Create Project 
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
-###9. Creating an Apache Cordova project
+###  9. Creating an Apache Cordova project
+
 ``` bash
  $ cd <project_folder>
  $ cordova create cordova com.example.news "CompanyNews"
@@ -225,15 +226,17 @@ https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-ang
 └── www
 ```
 
-###10. Cordova - Add Web Platfom
-``` bash
+###  10. Cordova - Add Web Platfom
+
+```bash
 cd cordova
 cordova platform add browser
 cordova run browser
 ```
 
-###11. Cordova - Automation build
-``` bash
+###  11. Cordova - Automation build
+
+```bash
 rm -r www
 cd ..
 ng build --target=production --environment=prod --output-path cordova/www/
