@@ -249,8 +249,7 @@ cordova run browser
 The Apache Cordova build process can be extended by using hooks. This is quite useful to inject our Angular 2 build process. For this task we are going to create a new directory scripts in the base directory of the Cordova project. Inside the directory we will have to create a script that takes care of the build process. Let's call this file prepareAngular2App.js.
 
 ```bash
-mkdir scripts
-touch prepareAngular2App.js
+touch scripts/prepareAngular2App.js
 ```
 
 
