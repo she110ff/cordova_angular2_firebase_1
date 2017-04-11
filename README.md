@@ -249,6 +249,12 @@ cordova run browser
 The Apache Cordova build process can be extended by using hooks. This is quite useful to inject our Angular 2 build process. For this task we are going to create a new directory scripts in the base directory of the Cordova project. Inside the directory we will have to create a script that takes care of the build process. Let's call this file prepareAngular2App.js.
 
 ```bash
+mkdir scripts
+touch prepareAngular2App.js
+```
+
+
+```js
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 
@@ -275,7 +281,7 @@ module.exports = function(context) {
 ```
 
 Here we run the angular-cli build process synchronously by running the shell command in the Angular 2 project directory and configuring the output to the Cordova www directory. Now we have to declare this value in the config.xml file to be executed before the Cordova app is built. We will use the hook before_prepare, as it will trigger preparing, building or running the application. Add the following lines to the config.xml file:
-```bash
+```xml
     <!-- Build and prepare the Angular 2 application. -->
     <hook type="before_prepare" src="scripts/prepareAngular2App.js"/>
 ```
