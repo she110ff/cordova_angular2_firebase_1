@@ -299,6 +299,16 @@ $ cordova platform add android
 $ cordova build android
 ```
 
+Google broke Cordova Android 6.1.x and some other frameworks with their latest sdk tools update.
+Cordova Android 6.2.1 has been released and it's now compatible with latest Android SDK.
+You can update your current incompatible android platform with cordova platform update android@6.2.1
+Or you can remove the existing platform and add the new one (will delete any manual change you did inside yourProject/platforms/android/ folder)
+
+```bash
+cordova platform rm android
+cordova platform add android@6.2.1
+```
+
 # Reference Sites
 
 ## Get Started
