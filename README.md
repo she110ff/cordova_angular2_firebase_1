@@ -226,7 +226,7 @@ https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-ang
 └── www
 ```
 
-###  10. Cordova - Add Web Platfom
+###  10. Add Web Platfom
 
 ```bash
 cd cordova
@@ -244,9 +244,55 @@ cd cordova
 cordova run browser
 ```
 
+### 12. Automatic builds
+
+The Apache Cordova build process can be extended by using hooks. This is quite useful to inject our Angular 2 build process. For this task we are going to create a new directory scripts in the base directory of the Cordova project. Inside the directory we will have to create a script that takes care of the build process. Let's call this file prepareAngular2App.js.
+
+```bash
+const fs = require('fs');
+const execSync = require('child_process').execSync;
+
+module.exports = function(context) {
+    console.log('Building Angular 2 application into "./www" directory.');
+    const basePath = context.opts.projectRoot;
+    const baseWWW = basePath + '/www';
+
+    console.log(execSync(
+      "ng build --target=production --environment=prod --output-path cordova/www/ --base-href .",
+      {
+        maxBuffer: 1024*1024,
+        cwd: basePath + '/..'
+      }).toString('utf8')
+    );
+    
+    var files = fs.readdirSync(baseWWW);
+    for (var i = 0; i < files.length; i++) {
+      if (files[i].endsWith('.gz')) {
+        fs.unlinkSync(baseWWW + '/' + files[i]);
+      }
+    }    
+};
+```
+
+Here we run the angular-cli build process synchronously by running the shell command in the Angular 2 project directory and configuring the output to the Cordova www directory. Now we have to declare this value in the config.xml file to be executed before the Cordova app is built. We will use the hook before_prepare, as it will trigger preparing, building or running the application. Add the following lines to the config.xml file:
+```bash
+    <!-- Build and prepare the Angular 2 application. -->
+    <hook type="before_prepare" src="scripts/prepareAngular2App.js"/>
+```
 
 
 
+## Cordova - Android 
+
+It is time to create an application that will be more useful than the browser platform. As we configured the build process, everything that we have to do is to add the Android platform and run it. Note that a valid Java and [Android SDK](https://developer.android.com/studio/index.html?hl=ko) has to be installed; to check if we meet the requirements run the command cordova requirements after adding the android platform.
+
+
+### 13. Add Android Platform
+
+```bash
+$ cordova platform add android
+$ cordova build android
+```
 
 # Reference Sites
 
