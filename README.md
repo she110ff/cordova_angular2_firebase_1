@@ -315,6 +315,91 @@ Then just open up the project using File > Open and pointing to the (yourProject
 
 
 
+-------------------------
+
+
+
+
+
+1. Init
+	AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
+https://github.com/angular/angularfire2/blob/master/docs/5-user-authentication.md	
+
+	
+2. Subscribe
+	constructor(public af: AngularFire) {
+		this.af.auth.subscribe(auth => console.log(auth));
+	}
+https://github.com/angular/angularfire2
+
+
+3. Update profile
+	if (user != null) {
+	  user.providerData.forEach(function (profile) {
+		console.log("Sign-in provider: "+profile.providerId);
+		console.log("  Provider-specific UID: "+profile.uid);
+		console.log("  Name: "+profile.displayName);
+		console.log("  Email: "+profile.email);
+		console.log("  Photo URL: "+profile.photoURL);
+	  });
+	}
+https://firebase.google.com/docs/auth/web/manage-users#get_a_users_provider-specific_profile_information
+
+
+4. Update Email
+	var user = firebase.auth().currentUser;
+
+	user.updateEmail("user@example.com").then(function() {
+	  // Update successful.
+	}, function(error) {
+	  // An error happened.
+	});
+https://firebase.google.com/docs/auth/web/manage-users#set_a_users_email_address
+
+
+4.1 sendEmailVerification
+var user = firebase.auth().currentUser;
+user.sendEmailVerification().then(function() {
+  // Email sent.
+}, function(error) {
+  // An error happened.
+});
+
+
+5. Router => CanActive
+
+	import { ModuleWithProviders } from '@angular/core';
+	import { Routes, RouterModule } from '@angular/router';
+	import { CanActivateAuthGuard } from './auth.service'
+
+	import { MyComponent } from './app.component';
+
+	const routes: Routes = [
+		{ path: '/home', component: MyComponent , canActivate: [CanActivateAuthGuard]}]
+	/In auth service/
+
+	import { CanActivate, Router } from '@angular/router';
+
+	@Injectable()
+	export class CanActivateAuthGuard implements CanActivate {
+	  constructor(private router: Router) {}
+		if (this.authService.isLoggedIn()) {
+			return true;
+		}
+		//Redirect the user before denying them access to this route
+		this.router.navigate(['/login']);
+		return false;
+	}
+
+http://stackoverflow.com/questions/39684742/angular2-check-user-login
+
+
+-------------------------
+
+
+
+
+
 # Reference Sites
 
 ## Get Started
