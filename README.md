@@ -143,7 +143,7 @@ const myFirebaseAuthConfig = {
 @NgModule({
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig, 'my-app-name')
   ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
