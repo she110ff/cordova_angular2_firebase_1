@@ -118,14 +118,32 @@ export class AppModule {}
 
 ```
 
-#### Custom FirebaseApp Names
+#### Authentication and Custom FirebaseApp Names
 You can optionally provide a custom FirebaseApp name with `initializeApp`.
 
 ```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+const myFirebaseConfig = {
+  apiKey: '<your-key>',
+  authDomain: '<your-project-authdomain>',
+  databaseURL: '<your-database-URL>',
+  storageBucket: '<your-storage-bucket>',
+  messagingSenderId: '<your-messaging-sender-id>'
+};
+
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
+
 @NgModule({
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig, authConfig, 'my-app-name')
+    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
   ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
