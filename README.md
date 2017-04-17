@@ -332,6 +332,24 @@ cordova build android
 Then just open up the project using File > Open and pointing to the (yourProjectDir)/Platforms/Android directory.
 
 
+## Firebase Deployment
+### 15. Build Production 
+
+This command runs a build for our project but with additional production optimizations such as bundling and minification. Now your project should have a dist/ directory. This is where all of our compiled ready to deploy code is located every time we run a build.
+```bash
+ng build --prod
+```
+
+### 16. Installatino Firebase CLI 
+
+Now that we have a project created lets go back to the command line. Next we next install the Firebase CLI via NPM. In your console run the following command: npm install -g firebase-tools. Once installed run firebase login to login to your Firebase account.
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init
+```
+
 
 -------------------------
 
@@ -430,3 +448,4 @@ https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-ang
 
 https://github.com/angular/angular-cli/wiki
 https://cordova.apache.org/docs/en/latest/reference/cordova-cli/index.html
+https://coryrylan.com/blog/deploy-angular-cli-apps-to-firebase
