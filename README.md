@@ -452,3 +452,6 @@ https://coryrylan.com/blog/deploy-angular-cli-apps-to-firebase
 
 ## JSON
 http://www.jsoneditoronline.org/?id=c6e6aeed379a3edcdc9670623b8720cb
+
+## FB DB for SQL Developer
+https://www.youtube.com/playlist?list=PLl-K7zZEsYLlP-k-RKFa7RyNPa9_wCH2s
