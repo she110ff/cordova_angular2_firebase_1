@@ -449,3 +449,6 @@ https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-ang
 https://github.com/angular/angular-cli/wiki
 https://cordova.apache.org/docs/en/latest/reference/cordova-cli/index.html
 https://coryrylan.com/blog/deploy-angular-cli-apps-to-firebase
+
+## JSON
+http://www.jsoneditoronline.org/?id=c6e6aeed379a3edcdc9670623b8720cb
