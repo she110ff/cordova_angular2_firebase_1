@@ -31,7 +31,7 @@ import 'rxjs/add/operator/take';
   selector: 'app-root',
   template: `
   <div>
-    <h4>Add Rocket</h4>
+    <h4> Rocket List</h4>
     
     <ul>
       <li *ngFor="let rocket of rockets | async">
@@ -39,11 +39,24 @@ import 'rxjs/add/operator/take';
       </li>
     </ul>
 
+    <h4> Query Rocket List</h4>
+    
+    <ul>
+      <li *ngFor="let rocket of queryObservable | async">
+         {{ rocket | json }}
+      </li>
+    </ul>
+
+
     <input type="text" #newTitle placeholder="Title" />
     <br/>
     <input type="text" #newDesc placeholder="desc" />
     <br/> 
-    <button (click)="addRocket(newTitle.value, newDesc.value)">Add</button>
+    <input type="text" #newRecruit placeholder="recruit" />
+    <br/> 
+    <input type="text" #newHost placeholder="host" />
+    <br/> 
+    <button (click)="addRocket(newTitle.value, newDesc.value, newRecruit.value, newHost.value)">Add</button>
   </div>
   `
 })
@@ -53,19 +66,61 @@ export class AdminRocketComponent {
   step: string;
   user: FirebaseObjectObservable<any>;
   rockets: FirebaseListObservable<any[]>;
+  queryObservable;
 
   constructor(public router: Router, private route: ActivatedRoute, public af: AngularFire) {
     this.rockets = af.database.list('/rockets');
+
+
     this.af.auth.subscribe(state => {
       console.log("Secondstep >> state:", state);
       if(state){
         //this.user = this.af.database.object('/users/'+state.auth.uid);
       };
     });
+
+    this.queryObservable = this.af.database.list('/rockets', {
+      query: {
+        orderByChild: 'created',
+        endAt:  new Date().getTime()
+      }
+    }).map(rockets => {
+        const filtered = rockets.filter(rocket => rocket.host === 'H 1');
+        return filtered;
+     }).map(rockets => {
+        const filtered = rockets.filter(rocket => rocket.recruit === 'R3');
+        return filtered;
+     });
   };
 
-  addRocket(newTitle: string, newDesc:string) {
-    this.rockets.push({ title: newTitle, desc:newDesc });
+
+  addRocket(newTitle: string, newDesc:string, newRecruit:string, newHost:string) {
+    this.rockets.push({ title: newTitle, desc:newDesc, recruit:newRecruit, host: newHost, created:new Date().getTime() });
+  }
+
+  searchRocket(){
+     this.queryObservable = this.af.database.list('/rockets', {
+      query: {
+        orderByChild: 'created',
+        endAt:  new Date().getTime()
+      }
+    });
+
+   this.queryObservable.subscribe(queriedItems => {
+      console.log("queriedItems:", queriedItems);  
+      return queriedItems.filter(rocket => {
+        console.log("rocket :", rocket);
+        return rocket.host == 'H 1';
+      })
+    }); 
+ /*
+    var allItems = this.af.database.list('rockets');
+
+    function getFilteredList(property:string, key:string) {
+      return queryObservable.filter(item  => {
+          return item[property] == key;
+       });
+    }*/
   }
 
 
