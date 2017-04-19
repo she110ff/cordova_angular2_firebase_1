@@ -5,6 +5,9 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { ApplicationComponent } from './components/application';
 import { LoginComponent } from './components/login';
+import { SignupComponent } from './components/signup';
+import { SecondstepComponent } from './components/secondstep';
+import { AdminRocketComponent } from './components/admin-rocket';
 import { ProfileComponent } from './components/profile';
 import { AuthGuard } from './shared/auth.guard';
 
@@ -26,8 +29,12 @@ const myFirebaseAuthConfig = {
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      
       //{path: '', component: ApplicationComponent},
+      {path: 'adminrocket', component: AdminRocketComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'signup', component: SignupComponent},
+      {path: 'secondstep', component: SecondstepComponent},
       {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
     ]),
     AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig, 'my-app-name')
@@ -35,6 +42,9 @@ const myFirebaseAuthConfig = {
   declarations: [
     ApplicationComponent,
     LoginComponent,
+    SignupComponent,
+    SecondstepComponent,
+    AdminRocketComponent,
     ProfileComponent,
   ],
   providers: [
