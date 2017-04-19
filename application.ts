@@ -13,6 +13,7 @@ import { AngularFire, AuthProviders, AuthMethods  } from 'angularfire2';
   <div>
     <a [routerLink]="['profile']">profile</a>
   </div>
+  <div> <a [routerLink]="['adminrocket']">admin rocket</a> </div>
   <router-outlet></router-outlet>
   `
 })
