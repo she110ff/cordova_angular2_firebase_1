@@ -26,6 +26,7 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable, Fireba
 import { Router, ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs/Rx";
 import 'rxjs/add/operator/take';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +53,12 @@ import 'rxjs/add/operator/take';
     <br/>
     <input type="text" #newDesc placeholder="desc" />
     <br/> 
-    <input type="text" #newRecruit placeholder="recruit" />
+    /*<input type="text" #newRecruit placeholder="recruit" />*/
+
+     <select class="form-control" [(ngModel)]="newRecruit" (ngModelChange)="updateWorkout($event)">
+        <option *ngFor="#recruit of recruits">{{recruit.key}}</option>
+    </select>
+
     <br/> 
     <input type="text" #newHost placeholder="host" />
     <br/> 
@@ -66,6 +72,7 @@ export class AdminRocketComponent {
   step: string;
   user: FirebaseObjectObservable<any>;
   rockets: FirebaseListObservable<any[]>;
+  recruits: FirebaseListObservable<any[]>;
   queryObservable;
 
   constructor(public router: Router, private route: ActivatedRoute, public af: AngularFire) {
@@ -79,23 +86,30 @@ export class AdminRocketComponent {
       };
     });
 
+    this.recruits = this.af.database.list('/recruits');
+    this.recruits.subscribe( recruits => console.log("recruits :",recruits));
+
     this.queryObservable = this.af.database.list('/rockets', {
       query: {
         orderByChild: 'created',
         endAt:  new Date().getTime()
       }
     }).map(rockets => {
-        const filtered = rockets.filter(rocket => rocket.host === 'H 1');
-        return filtered;
+        return rockets.filter(rocket => rocket.host === 'H 1');
      }).map(rockets => {
         const filtered = rockets.filter(rocket => rocket.recruit === 'R3');
+        console.log('filtered length:', filtered.length);
         return filtered;
      });
   };
 
 
   addRocket(newTitle: string, newDesc:string, newRecruit:string, newHost:string) {
-    this.rockets.push({ title: newTitle, desc:newDesc, recruit:newRecruit, host: newHost, created:new Date().getTime() });
+    let rocket = { title: newTitle, desc:newDesc, recruit:newRecruit, host: newHost, created:new Date().getTime() };
+    console.log("add rocket:", rocket);
+    this.rockets.push(rocket)
+    .then(rocket => console.log("success for adding rocket" + rocket ))
+    .catch(error => alert("failed for adding rocket"));
   }
 
   searchRocket(){
