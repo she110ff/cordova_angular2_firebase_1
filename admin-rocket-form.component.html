@@ -1,0 +1,94 @@
+<h1>Admin Rocket Form</h1>
+
+    <div>
+      <h2>학생참여 Rocket</h2>
+      <div>
+        <form>
+        	<div>
+	          <div class="form-group">
+	            <label for="title">제목</label>
+	            <input type="text" class="form-control" #title required >
+	          </div>
+	          <div class="form-group">
+	            <label for="desc">설명</label>
+	            <textarea type="text" class="form-control" #desc ></textarea>
+	          </div>
+	          <div class="form-group">
+	            <label for="host">주최측</label>
+	            <input type="text" class="form-control"  #host >
+	          </div>
+	          <input #recruit type="hidden" value="학생참여">
+
+	          <div class="form-group">
+	            <label for="host">모집정원</label>
+	            <input type="number" class="form-control"  #quota value="10">
+	          </div>
+	          <div class="form-group">
+	            <label for="host">대표이미지</label>
+	              	<input type='file' id="imgInp" />
+    				<img id="blah" src="#" alt="your image" />
+	          </div>
+	          <input #mimage type="hidden" value="">
+
+	          <div class="form-group">
+	            <label for="host">키워드</label>
+	            <input type="text" class="form-control"  #keywords >
+	          </div>
+          	</div>
+          
+          <hr>
+
+          <div>
+	          <div class="form-group" *ngIf="offlines">
+	            <label>오프라인</label>
+	            <select class="form-control"  #selOffline (change)="offline.value = selOffline.value" required>
+	              <option *ngFor="let offline of cOfflines" [value]="offline.$key">{{offline.$key}}</option>
+	            </select>
+	          </div>
+	          <input #offline type="hidden" value="{{firstOffline}}">
+
+	          <div class="form-group" *ngIf="activityBenefits">
+	            <label>활동혜택</label>
+	            <select class="form-control"  #selActivityBenefit (change)="activityBenefit.value = selActivityBenefit.value" required>
+	              <option *ngFor="let activityBenefit of cActivityBenefits" [value]="activityBenefit.$key">{{activityBenefit.$key}}</option>
+	            </select>
+	          </div>
+	          <input #activityBenefit type="hidden" value="{{firstBenefit}}">
+
+	          <div class="form-group" *ngIf="activityLocations">
+	            <label>활동지역</label>
+	            <select class="form-control"  #selActivityLocation (change)="activityLocation.value = selActivityLocation.value" required>
+	              <option *ngFor="let activityLocation of cActivityLocations" [value]="activityLocation.$key">{{activityLocation.$key}}</option>
+	            </select>
+	          </div>
+	          <input #activityLocation type="hidden" value="{{firstLocation}}">
+
+	          <div class="form-group" *ngIf="highflierBenefits">
+	            <label>우수자혜택</label>
+	            <select class="form-control"  #selHighflierBenefit (change)="highflierBenefit.value = selHighflierBenefit.value" required>
+	              <option *ngFor="let highflierBenefit of cHighflierBenefits" [value]="highflierBenefit.$key">{{highflierBenefit.$key}}</option>
+	            </select>
+	          </div>
+	          <input #highflierBenefit type="hidden" value="{{firstHighflierBenefit}}">
+
+	          <div class="form-group" *ngIf="meetingCycles">
+	            <label>모임주기</label>
+	            <select class="form-control"  #selMeetingCycle (change)="meetingCycle.value = selMeetingCycle.value" required>
+	              <option *ngFor="let meetingCycle of cMeetingCycles" [value]="meetingCycle.$key">{{meetingCycle.$key}}</option>
+	            </select>
+	          </div>
+	          <input #meetingCycle type="hidden" value="{{firstMeetingCycle}}">
+
+          </div>
+        </form>
+
+          <hr>
+
+          <button class="btn btn-cancel" (click)="cancel()">Cancel</button>
+          <button class="btn btn-success" (click)="addRocket(title.value, desc.value, recruit.value, host.value, quota.value, mimage.value, keywords.value,
+          									activityBenefit.value, activityLocation.value, highflierBenefit.value, meetingCycle.value)">ADD</button>
+      </div>
+    </div>
+
+
+    
