@@ -349,7 +349,8 @@ npm install -g firebase-tools
 firebase login
 firebase init
 ```
-
+sometime
+firebase login --no-localhost
 
 -------------------------
 
