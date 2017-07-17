@@ -457,6 +457,9 @@ http://www.jsoneditoronline.org/?id=c6e6aeed379a3edcdc9670623b8720cb
 ## FB DB for SQL Developer
 https://www.youtube.com/playlist?list=PLl-K7zZEsYLlP-k-RKFa7RyNPa9_wCH2s
 
+## FB Function-worker
+https://github.com/firebase/functions-samples/blob/master/delete-unused-accounts-cron/functions/index.js
+
 ## CORDOVA FCM PLUGIN
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
 https://github.com/fechanique/cordova-plugin-fcm
