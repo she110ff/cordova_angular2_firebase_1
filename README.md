@@ -459,6 +459,7 @@ https://www.youtube.com/playlist?list=PLl-K7zZEsYLlP-k-RKFa7RyNPa9_wCH2s
 
 ## FB Function-worker
 https://github.com/firebase/functions-samples/blob/master/delete-unused-accounts-cron/functions/index.js
+https://firebase.googleblog.com/2017/03/how-to-schedule-cron-jobs-with-cloud.html
 
 ## CORDOVA FCM PLUGIN
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
