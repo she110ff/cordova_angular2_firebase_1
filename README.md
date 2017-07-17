@@ -459,3 +459,4 @@ https://www.youtube.com/playlist?list=PLl-K7zZEsYLlP-k-RKFa7RyNPa9_wCH2s
 
 ## CORDOVA FCM PLUGIN
 https://github.com/fechanique/cordova-plugin-fcm
+https://stackoverflow.com/questions/39230694/angularjs-is-there-any-way-to-send-push-notifications-using-angular-js-and-fcm
