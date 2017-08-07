@@ -465,3 +465,4 @@ https://firebase.googleblog.com/2017/03/how-to-schedule-cron-jobs-with-cloud.htm
 https://www.becompany.ch/en/blog/2016/10/19/creating-apache-cordova-app-with-angular2
 https://github.com/fechanique/cordova-plugin-fcm
 https://stackoverflow.com/questions/39230694/angularjs-is-there-any-way-to-send-push-notifications-using-angular-js-and-fcm
+https://arnhem.luminis.eu/complete-angular-js-cordova-app-tutorial-part-4/
